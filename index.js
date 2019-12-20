@@ -8,19 +8,6 @@ function log(target, propertyKey, descriptor) {
     console.log("[Log]Date:" + new Date().getTime());
     target.msg = "hello";
 }
-function upperCase1(target, propertyName) {
-    Object.defineProperty(target, propertyName, {
-        configurable: true,
-        set: function (e) {
-            e = e[0].toLocaleUpperCase() + e.slice(1);
-            this.value = e;
-        },
-        get: function () {
-            return this.value;
-        }
-    });
-    console.log(propertyName);
-}
 var Animal = /** @class */ (function () {
     function Animal(_name) {
         this.name = _name;
@@ -28,9 +15,6 @@ var Animal = /** @class */ (function () {
     Animal.prototype.say = function () {
         console.log("my name is %s", this.name);
     };
-    __decorate([
-        upperCase1
-    ], Animal.prototype, "name", void 0);
     __decorate([
         log
     ], Animal.prototype, "say", null);
